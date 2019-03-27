@@ -5,7 +5,7 @@
  */
 package boletin24;
 
-import java.awt.Color;
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -19,6 +19,7 @@ public class Interfaz extends JFrame {
         JButton b1,b2,b3;
         JList lista;
         JTextArea tArea;
+        String[] listaA = {"Elemento Lista1","Elemento Lista2","Elemento Lista3"};
         
         public void compoInit(){
             pan1 = new JPanel();
@@ -33,45 +34,51 @@ public class Interfaz extends JFrame {
             liText2 = new JTextField();
             lista = new JList();
             tArea = new JTextArea();
+            //marco
             this.setTitle("Boletin24");
             this.setSize(600, 700);
+            // 1º panel
             etiq1.setBounds(150,100,50,50);
             etiq2.setBounds(140,150,100,50);
             liText1.setBounds(300,100,180,40);
             liText2.setBounds(300,170,180,45);
-            b1.setBounds(160,300,130,40);
-            b2.setBounds(350,300,130,40);
+            b1.setBounds(160,280,130,40);
+            b2.setBounds(350,280,130,40);
             pan1.setLayout(null);
-//            pan1.setBounds(250,200,350,250);
-            pan1.setSize(600,350);
-            pan1.setBackground(Color.yellow);
+            pan1.setBounds(10,10,577,350);
             pan2.setLayout(null);
-//            pan2.setBounds(350,550,200,200);
-pan2.setSize(600,350);
-            pan2.setBackground(Color.red);
-            b3.setBounds(350, 550, 100, 100);
+            pan2.setBounds(10,375,577,290);
+            // 2º panel
+            lista.setBounds(40,20,170,200);
+            lista.setListData(listaA);
+            b3.setBounds(260,80,100,50);
+            tArea.setBounds(400,50,130,170);
+            tArea.setText("AREA DE TEXTO");
+            // 3º panel
+            pan3.setBackground(Color.LIGHT_GRAY);
         }
         
         public void crearInterfaz(){
             //metodo compoñentes para iniciar
             compoInit();
-            //1º panel
+            //1º panel arriba
         pan1.add(etiq1);
         pan1.add(etiq2);
         pan1.add(liText1);
         pan1.add(liText2);
         pan1.add(b1);
         pan1.add(b2);
-            //2º panel
+            //2º panel abajo
         pan2.add(lista);
         pan2.add(b3);
         pan2.add(tArea);
+            //3º panel que contendrá los anteriores
         pan3.setLayout(new BoxLayout(pan3,BoxLayout.Y_AXIS));
         pan3.add(pan1);
         pan3.add(pan2);
-        this.add(pan3);
         this.add(pan1);            
         this.add(pan2);
+        this.add(pan3);
         this.setVisible(true);
         this.setDefaultCloseOperation(3);
         }
