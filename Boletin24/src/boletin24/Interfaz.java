@@ -6,6 +6,8 @@
 package boletin24;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -13,13 +15,15 @@ import javax.swing.*;
  * @author ecollazodominguez
  */
 public class Interfaz extends JFrame {
+            String texto = "";
         JPanel pan1,pan2,pan3;
         JLabel etiq1,etiq2;
-        JTextField liText1,liText2;
+        JTextField liText1;
+        JPasswordField pass;
         JButton b1,b2,b3;
         JList lista;
         JTextArea tArea;
-        String[] listaA = {"Elemento Lista1","Elemento Lista2","Elemento Lista3"};
+        String[] listaA = {"DAM","ASIR","DAW"};
         
         public void compoInit(){
             pan1 = new JPanel();
@@ -31,7 +35,7 @@ public class Interfaz extends JFrame {
             b2 = new JButton("LIMPAR");
             b3 = new JButton("BOTON");
             liText1 = new JTextField();
-            liText2 = new JTextField();
+            pass = new JPasswordField();
             lista = new JList();
             tArea = new JTextArea();
             //marco
@@ -41,7 +45,7 @@ public class Interfaz extends JFrame {
             etiq1.setBounds(150,100,50,50);
             etiq2.setBounds(140,150,100,50);
             liText1.setBounds(300,100,180,40);
-            liText2.setBounds(300,170,180,45);
+            pass.setBounds(300,170,180,45);
             b1.setBounds(160,280,130,40);
             b2.setBounds(350,280,130,40);
             pan1.setLayout(null);
@@ -65,7 +69,7 @@ public class Interfaz extends JFrame {
         pan1.add(etiq1);
         pan1.add(etiq2);
         pan1.add(liText1);
-        pan1.add(liText2);
+        pan1.add(pass);
         pan1.add(b1);
         pan1.add(b2);
             //2º panel abajo
@@ -79,7 +83,30 @@ public class Interfaz extends JFrame {
         this.add(pan1);            
         this.add(pan2);
         this.add(pan3);
+        
+            //listeners
+            b2.addActionListener(new ExecutarEvento());
+            b3.addActionListener(new ExecutarEvento());
+            
         this.setVisible(true);
         this.setDefaultCloseOperation(3);
         }
+        public class ExecutarEvento implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            if (e.getSource() == b2) {
+                liText1.setText("");
+                pass.setText("");
+            }
+                else if (e.getSource() == b3){
+                texto = liText1.getText()+"\n"+lista.getSelectedValue()+"\n\n"+texto;
+                tArea.setText(texto);
+            }
+        }
+    }
+
 }
+
+
