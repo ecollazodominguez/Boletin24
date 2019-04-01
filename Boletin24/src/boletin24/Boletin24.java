@@ -17,6 +17,9 @@ public class Boletin24 {
     public static void main(String[] args) {
         Interfaz lay = new Interfaz();
         lay.crearInterfaz();
+        Paleta ven = new Paleta();
+        ven.setVisible(true);
+        ven.setDefaultCloseOperation(3);
     }
     
 }
