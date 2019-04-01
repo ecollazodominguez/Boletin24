@@ -114,7 +114,7 @@ public class Paleta extends javax.swing.JFrame {
         });
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "DAM", "DAW", "ASIR"};
+            String[] strings = { "DAM", "DAW", "ASIR" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
